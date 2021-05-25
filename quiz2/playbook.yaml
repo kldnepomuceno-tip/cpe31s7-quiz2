@@ -1,0 +1,27 @@
+---
+- name: Kent Lynard D. Nepomuceno
+  hosts: target
+
+  tasks:
+  - name: Change motd  Kent Nepomuceno
+    lineinfile:
+      path: '/etc/motd'
+      line: 'Ansible Managed by 1813206'
+      state: present
+
+  - name: Create a user Kent Nepomuceno
+    user:
+      name: kldnepomuceno-tip
+      state: present
+      password: AnsibleManaged
+
+  - name: passwordless sudo user kldnepomuceno-tip user
+    lineinfile:
+      path: '/etc/sudoers'
+      line: 'kldnepomuceno-tip ALL=(ALL) NOPASSWD: ALL'
+      state: present
+
+  - name: group sysad2 groupings
+    group:
+      name: sysad2
+      state: present
